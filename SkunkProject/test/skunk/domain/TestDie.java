@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import edu.princeton.cs.introcs.StdOut;
+
 public class TestDie
 {
 
@@ -167,8 +169,14 @@ public class TestDie
 	@Test
 	public void test_die_to_string()
 	{
+		boolean result = false;
 		Die die = new Die();
-		assertEquals("Die: ", die.toString());
+		die.roll();
+		String string = die.toString();
+		StdOut.println(string);
+		if (string.equals("Die: 1") || string.equals("Die: 2") || string.equals("Die: 3") ||  string.equals("Die: 4") || string.equals("Die: 5") || string.equals("Die: 6"))
+			result = true ;
+		assertTrue(result);
 	}
 
 }
