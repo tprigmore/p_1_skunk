@@ -137,7 +137,7 @@ public class TestDie
 			Die die = new Die();
 			die.roll();
 			int value = die.getLastRoll();
-			if (value == 6)
+			if (value == 0)
 			{
 				result = true;
 				break;
