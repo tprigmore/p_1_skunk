@@ -13,6 +13,15 @@ class TestPredictableDice
 		PredictableDice dice = new PredictableDice();
 		dice.roll();
 		assertEquals(2, dice.getLastRoll());
+		dice.roll();
+		assertEquals(4, dice.getLastRoll());
+		dice.roll();
+		assertEquals(6, dice.getLastRoll());
+		dice.roll();
+		assertEquals(2, dice.getLastRoll());
+		dice.roll();
+		assertEquals(4, dice.getLastRoll());
+
 	}
 
 }
