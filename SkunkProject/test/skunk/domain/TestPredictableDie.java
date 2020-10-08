@@ -3,6 +3,7 @@ package skunk.domain;
 import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class TestPredictableDie
@@ -38,7 +39,9 @@ class TestPredictableDie
 	
 	@Test
     public void test_predictable_with_empty_initail_int_array() {
+		Assertions.assertThrows(RuntimeException.class, ()-> {
 		PredictableDie die = new PredictableDie(new int[] {});
 		die.roll();
+		});
 	}
 }
