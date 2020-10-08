@@ -55,5 +55,77 @@ public class TestDie
 		}
 		assertTrue(result);
 	}
-
+	
+	@Test
+	public void test_die_for_3()
+	{
+		boolean result = false;
+		for (int i = 0; i < 100; i++)
+		{
+			Die die = new Die();
+			die.roll();
+			int value = die.getLastRoll();
+			if (value == 3)
+			{
+				result = true;
+				break;
+			}
+		}
+		assertTrue(result);
+	}
+	
+	@Test
+	public void test_die_for_4()
+	{
+		boolean result = false;
+		for (int i = 0; i < 100; i++)
+		{
+			Die die = new Die();
+			die.roll();
+			int value = die.getLastRoll();
+			if (value == 4)
+			{
+				result = true;
+				break;
+			}
+		}
+		assertTrue(result);
+	}
+	
+	@Test
+	public void test_die_for_5()
+	{
+		boolean result = false;
+		for (int i = 0; i < 100; i++)
+		{
+			Die die = new Die();
+			die.roll();
+			int value = die.getLastRoll();
+			if (value == 5)
+			{
+				result = true;
+				break;
+			}
+		}
+		assertTrue(result);
+	}
+	
+	@Test
+	public void test_die_for_6()
+	{
+		boolean result = false;
+		for (int i = 0; i < 100; i++)
+		{
+			Die die = new Die();
+			die.roll();
+			int value = die.getLastRoll();
+			if (value == 6)
+			{
+				result = true;
+				break;
+			}
+		}
+		assertTrue(result);
+	}
+	
 }
