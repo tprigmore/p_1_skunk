@@ -71,6 +71,6 @@ class TestDice
 				break;
 			}
 		}
-		assertFalse(flag);
+		assertTrue(flag);
 	}
 }
