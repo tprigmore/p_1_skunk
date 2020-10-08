@@ -34,7 +34,11 @@ class TestPredictableDie
 		assertEquals(1, die.getLastRoll());
 		die.roll();
 		assertEquals(1, die.getLastRoll());
-
 	}
 	
+	@Test
+    public void test_predictable_with_empty_initail_int_array() {
+		PredictableDie die = new PredictableDie(new int[] {});
+		die.roll();
+	}
 }

@@ -5,7 +5,7 @@ public class PredictableDie
 	private int[] theRolls;
 	private int index;
 	private int lastRoll;
-	
+
 	public PredictableDie()
 	{
 		// TODO Auto-generated constructor stub
@@ -13,7 +13,10 @@ public class PredictableDie
 
 	public PredictableDie(int[] is)
 	{
-		this.theRolls = is ;
+		if (is.length == 0) {
+			throw new RuntimeException();
+		}
+		this.theRolls = is;
 		this.index = 0;
 	}
 
@@ -21,10 +24,10 @@ public class PredictableDie
 	{
 		this.lastRoll = this.theRolls[this.index];
 		this.index++;
-		if (this.index == this.theRolls.length) {
+		if (this.index == this.theRolls.length)
+		{
 			this.index = 0;
 		}
-		
 	}
 
 	public int getLastRoll()
