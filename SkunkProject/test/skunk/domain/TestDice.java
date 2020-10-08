@@ -35,4 +35,23 @@ class TestDice
 			assertTrue(result);
 		}
 	}
+
+	@Test
+	public void test_dice_for_1()
+	{
+		Dice dice = new Dice();
+		int value;
+		boolean flag = false;
+		for (int i = 0; i < 1000; i++)
+		{
+			dice.roll();
+			value = dice.getLastRoll();
+			if (value == 1)
+			{
+				flag = true;
+				break;
+			}
+		}
+		assertTrue(flag);
+	}
 }
