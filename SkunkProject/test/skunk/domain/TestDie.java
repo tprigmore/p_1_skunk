@@ -145,4 +145,22 @@ public class TestDie
 		}
 		assertFalse(result);
 	}
+	
+	@Test
+	public void test_die_for_7()
+	{
+		boolean result = false;
+		for (int i = 0; i < 100; i++)
+		{
+			Die die = new Die();
+			die.roll();
+			int value = die.getLastRoll();
+			if (value == 7)
+			{
+				result = true;
+				break;
+			}
+		}
+		assertFalse(result);
+	}
 }
