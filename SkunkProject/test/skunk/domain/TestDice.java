@@ -52,6 +52,6 @@ class TestDice
 				break;
 			}
 		}
-		assertTrue(flag);
+		assertFalse(flag);
 	}
 }
