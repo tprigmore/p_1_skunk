@@ -20,7 +20,7 @@ class TestPredictableDie
 		PredictableDie die = new PredictableDie(new int[] {1,2,3});
 		die.roll();
 		assertEquals(1, die.getLastRoll());
-		fail("Not yet implemented");
+		//fail("Not yet implemented");
 	}
 	
 }
