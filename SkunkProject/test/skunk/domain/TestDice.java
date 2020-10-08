@@ -32,7 +32,7 @@ class TestDice
 			dice.roll();
 			int value = dice.getLastRoll();
 			boolean result = (value >= 2 || value <= 12);
-			assertFalse(result);
+			assertTrue(result);
 		}
 	}
 }
