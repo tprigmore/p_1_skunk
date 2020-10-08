@@ -16,8 +16,6 @@ public class SkunkApp
 		
 		value = dice.getLastRoll();
 		StdOut.println("The dice total is: " + value);
-		
-
 	}
 
 }
