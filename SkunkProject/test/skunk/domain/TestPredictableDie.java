@@ -17,8 +17,10 @@ class TestPredictableDie
 	@Test
 	public void test_predictable_die_123()
 	{
-		
-		fail("Not yet implemented");
+		PredictableDie die = new PredictableDie(new int[] {1,2,3});
+		die.roll();
+		assertEquals(1, die.getLastRoll());
+		//fail("Not yet implemented");
 	}
 	
 }
