@@ -21,6 +21,9 @@ public class PredictableDie
 	{
 		this.lastRoll = this.theRolls[this.index];
 		this.index++;
+		if (this.index == this.theRolls.length) {
+			this.index = 0;
+		}
 		
 	}
 
