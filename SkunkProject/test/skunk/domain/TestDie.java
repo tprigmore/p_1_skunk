@@ -37,7 +37,7 @@ public class TestDie
 		}
 		assertTrue(result);
 	}
-	
+
 	@Test
 	public void test_die_for_2()
 	{
@@ -55,7 +55,7 @@ public class TestDie
 		}
 		assertTrue(result);
 	}
-	
+
 	@Test
 	public void test_die_for_3()
 	{
@@ -73,7 +73,7 @@ public class TestDie
 		}
 		assertTrue(result);
 	}
-	
+
 	@Test
 	public void test_die_for_4()
 	{
@@ -91,7 +91,7 @@ public class TestDie
 		}
 		assertTrue(result);
 	}
-	
+
 	@Test
 	public void test_die_for_5()
 	{
@@ -109,7 +109,7 @@ public class TestDie
 		}
 		assertTrue(result);
 	}
-	
+
 	@Test
 	public void test_die_for_6()
 	{
@@ -127,7 +127,7 @@ public class TestDie
 		}
 		assertTrue(result);
 	}
-	
+
 	@Test
 	public void test_die_for_0()
 	{
@@ -145,7 +145,7 @@ public class TestDie
 		}
 		assertFalse(result);
 	}
-	
+
 	@Test
 	public void test_die_for_7()
 	{
@@ -163,4 +163,12 @@ public class TestDie
 		}
 		assertFalse(result);
 	}
+
+	@Test
+	public void test_die_to_string()
+	{
+		Die die = new Die();
+		assertEquals("Die: ", die.toString());
+	}
+
 }
