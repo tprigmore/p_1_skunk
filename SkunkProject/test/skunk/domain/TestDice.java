@@ -256,4 +256,23 @@ class TestDice
 		assertTrue(flag);
 	}
 	
+	@Test
+	public void test_dice_for_13()
+	{
+		Dice dice = new Dice();
+		int value;
+		boolean flag = false;
+		for (int i = 0; i < 1000; i++)
+		{
+			dice.roll();
+			value = dice.getLastRoll();
+			if (value == 13)
+			{
+				flag = true;
+				break;
+			}
+		}
+		assertFalse(flag);
+	}
+	
 }
