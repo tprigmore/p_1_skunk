@@ -29,7 +29,7 @@ public class TestDie
 			Die die = new Die();
 			die.roll();
 			int value = die.getLastRoll();
-			if (value == 0)
+			if (value == 1)
 			{
 				result = true;
 				break;
