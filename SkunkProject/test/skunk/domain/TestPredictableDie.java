@@ -24,6 +24,8 @@ class TestPredictableDie
 		assertEquals(2, die.getLastRoll());
 		die.roll();
 		assertEquals(3, die.getLastRoll());
+		die.roll();
+		assertEquals(1, die.getLastRoll());
 		//fail("Not yet implemented");
 	}
 	
