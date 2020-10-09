@@ -275,4 +275,11 @@ class TestDice
 		assertFalse(flag);
 	}
 	
+	@Test
+	public void test_dice_toString()
+	{
+		Dice dice = new Dice();
+		String string = dice.toString();
+		assertTrue(string.contains("Dice with last roll: "));
+	}
 }
