@@ -8,7 +8,8 @@ public class PredictableDie
 
 	public PredictableDie()
 	{
-		// TODO Auto-generated constructor stub
+		this.lastRoll = 1;
+		this.index = 0;
 	}
 
 	public PredictableDie(int[] is)
