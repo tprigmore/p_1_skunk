@@ -8,19 +8,16 @@ public class Player
 	{
 		
 	}
-		
-
-
-	public Player(String string)
+	
+	public Player(String name)
 	{
-
+		this.name = name;
 	}
-
 
 	public Object getName()
 	{
 
-		return "Scott";
+		return this.name;
 	}
 
 }
