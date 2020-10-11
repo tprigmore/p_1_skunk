@@ -8,7 +8,7 @@ class TestPlayer
 {
 
 	@Test
-	void test()
+	void test_player_constructor()
 	{
 		fail("Not yet implemented");
 	}
