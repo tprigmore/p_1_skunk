@@ -35,7 +35,7 @@ class TestPlayer
 	void test_player_empty_constructor()
 	{
 		Player player1 = new Player();
-		assertEquals("John De", player1.getName());
+		assertEquals("John Doe", player1.getName());
 		
 	}
 }
