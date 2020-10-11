@@ -20,4 +20,16 @@ public class Player
 		return this.name;
 	}
 
+	public void setPoints(int i)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	public int getPoints()
+	{
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

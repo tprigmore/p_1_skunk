@@ -14,5 +14,13 @@ class TestPlayer
 		assertEquals("Scott", player1.getName());
 		
 	}
-
+	
+	@Test
+	void test_player_set_get_points()
+	{
+		Player player1 = new Player("Scott");
+		player1.setPoints(13);
+		assertEquals("Scott", player1.getPoints());
+		
+	}
 }
