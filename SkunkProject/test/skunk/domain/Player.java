@@ -3,6 +3,7 @@ package skunk.domain;
 public class Player
 {
 	private String name ;
+	private int points ;
 	
 	public Player()
 	{
@@ -20,16 +21,14 @@ public class Player
 		return this.name;
 	}
 
-	public void setPoints(int i)
+	public void setPoints(int points)
 	{
-		// TODO Auto-generated method stub
-		
+		this.points = points;
 	}
 
 	public int getPoints()
 	{
-		// TODO Auto-generated method stub
-		return 13;
+		return this.points;
 	}
 
 }
