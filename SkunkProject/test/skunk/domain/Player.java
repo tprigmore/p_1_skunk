@@ -4,6 +4,7 @@ public class Player
 {
 	private String name ;
 	private int points ;
+	private int chips ;
 	
 	public Player()
 	{
@@ -13,6 +14,8 @@ public class Player
 	public Player(String name)
 	{
 		this.name = name;
+		this.points = 0;
+		this.chips = 0;
 	}
 
 	public String getName()
@@ -33,7 +36,7 @@ public class Player
 
 	public Integer getChips()
 	{
-		return 50;
+		return this.chips;
 	}
 
 }
