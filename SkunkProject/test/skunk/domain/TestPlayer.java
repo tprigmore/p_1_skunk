@@ -27,6 +27,7 @@ class TestPlayer
 	void test_player_set_get_chips()
 	{
 		Player player1 = new Player("Scott");
+		player1.setChips(50);
 		assertEquals(50, player1.getChips());	
 	}
 }

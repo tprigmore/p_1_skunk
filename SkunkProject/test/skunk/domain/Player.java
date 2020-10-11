@@ -39,4 +39,10 @@ public class Player
 		return this.chips;
 	}
 
+	public void setChips(int chips)
+	{
+		this.chips = 0;
+		
+	}
+
 }
