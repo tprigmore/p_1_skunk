@@ -15,7 +15,7 @@ public class Player
 		this.name = name;
 	}
 
-	public Object getName()
+	public String getName()
 	{
 
 		return this.name;
@@ -29,6 +29,11 @@ public class Player
 	public int getPoints()
 	{
 		return this.points;
+	}
+
+	public Integer getChips()
+	{
+		return 50;
 	}
 
 }
