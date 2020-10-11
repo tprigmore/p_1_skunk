@@ -41,7 +41,7 @@ public class Player
 
 	public void setChips(int chips)
 	{
-		this.chips = 0;
+		this.chips = chips;
 		
 	}
 
