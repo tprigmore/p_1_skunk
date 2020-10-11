@@ -8,7 +8,7 @@ public class Player
 	
 	public Player()
 	{
-		
+		this.name = "John Doe";
 	}
 	
 	public Player(String name)
@@ -42,7 +42,5 @@ public class Player
 	public void setChips(int chips)
 	{
 		this.chips = chips;
-		
 	}
-
 }

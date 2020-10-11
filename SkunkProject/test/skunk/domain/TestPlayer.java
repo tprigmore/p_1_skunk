@@ -30,4 +30,12 @@ class TestPlayer
 		player1.setChips(50);
 		assertEquals(50, player1.getChips());	
 	}
+	
+	@Test
+	void test_player_empty_constructor()
+	{
+		Player player1 = new Player();
+		assertEquals("John De", player1.getName());
+		
+	}
 }
