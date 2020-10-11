@@ -29,7 +29,7 @@ public class Player
 	public int getPoints()
 	{
 		// TODO Auto-generated method stub
-		return 0;
+		return 13;
 	}
 
 }

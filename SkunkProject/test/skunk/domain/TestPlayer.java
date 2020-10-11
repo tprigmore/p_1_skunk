@@ -20,7 +20,7 @@ class TestPlayer
 	{
 		Player player1 = new Player("Scott");
 		player1.setPoints(13);
-		assertEquals("Scott", player1.getPoints());
+		assertEquals(13, player1.getPoints());
 		
 	}
 }
