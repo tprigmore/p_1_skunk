@@ -10,7 +10,9 @@ class TestPlayer
 	@Test
 	void test_player_constructor()
 	{
-		fail("Not yet implemented");
+		Player player1 = new Player("Scott");
+		assertEquals("Scott", player1.getName());
+		
 	}
 
 }
