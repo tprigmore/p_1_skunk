@@ -6,9 +6,11 @@ import org.junit.jupiter.api.Test;
 
 class TestTurn
 {
-
+	private Player activePlayer ;
+	private Dice dice ;
+	
 	@Test
-	void test()
+	void testTurnState()
 	{
 		fail("Not yet implemented");
 	}
