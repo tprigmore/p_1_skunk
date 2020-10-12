@@ -8,12 +8,20 @@ class TestTurn
 {
 	
 	@Test
-	void testTurnState()
+	void testTurnActivePlayer()
 	{
 		Player activePlayer = new Player("Scott");
 		Turn turn = new Turn(activePlayer);
 		
 		assertEquals("Scott", turn.getActivePlayer().getName());
 	}
-
+	
+	@Test
+	void testTurnTurnGetPlayer()
+	{
+		Player activePlayer = new Player("Scott");
+		Turn turn = new Turn(activePlayer);
+		
+		assertEquals(activePlayer, turn.getActivePlayer());
+	}
 }
