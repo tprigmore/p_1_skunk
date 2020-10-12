@@ -6,13 +6,14 @@ import org.junit.jupiter.api.Test;
 
 class TestTurn
 {
-	private Player activePlayer ;
-	private Dice dice ;
 	
 	@Test
 	void testTurnState()
 	{
-		fail("Not yet implemented");
+		Player activePlayer = new Player("Scott");
+		Turn turn = new Turn(activePlayer);
+		
+		assertEquals("Scott", turn.getActivePlayer().getName());
 	}
 
 }
