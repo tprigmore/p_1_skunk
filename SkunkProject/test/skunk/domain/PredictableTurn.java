@@ -2,16 +2,16 @@ package skunk.domain;
 
 public class PredictableTurn
 {
+	private Player player;
 
-	public PredictableTurn(Player player1)
+	public PredictableTurn(Player player)
 	{
-		// TODO Auto-generated constructor stub
+		this.player = player;
 	}
 
 	public Player getPlayer()
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return this.player;
 	}
 
 }
