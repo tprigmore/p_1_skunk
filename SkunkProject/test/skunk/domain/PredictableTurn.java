@@ -3,7 +3,7 @@ package skunk.domain;
 public class PredictableTurn
 {
 	private Player player ;
-	private Dice dice ;
+	private PredictableDice dice ;
 
 	public PredictableTurn(Player player)
 	{
@@ -18,6 +18,12 @@ public class PredictableTurn
 	public Player getPlayer()
 	{
 		return this.player;
+	}
+
+	public String takeATurn()
+	{
+		
+		return "pass";
 	}
 
 }
