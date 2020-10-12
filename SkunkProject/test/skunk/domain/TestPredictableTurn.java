@@ -10,7 +10,9 @@ class TestPredictableTurn
 	@Test
 	void test_predictable_turn()
 	{
-		TestPredictableTurn turn = new TestPredictableTurn();
+		Player player1 = new Player("Scott");
+		PredictableTurn turn = new PredictableTurn(player1);
+		assertEquals(player1, turn.getPlayer());
 	}
 
 }
