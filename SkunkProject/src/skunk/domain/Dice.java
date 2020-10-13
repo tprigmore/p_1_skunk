@@ -15,7 +15,7 @@ public class Dice
 {
 	private static final int SKUNK = -1;
 
-	private static final int SKUNK_DUECE = -2;
+	private static final int SKUNK_DEUCE = -2;
 
 	private static final int DOUBLE_SKUNK = -4;
 	// Instance fields (variables) may be declared anywhere in class body
@@ -69,7 +69,7 @@ public class Dice
 			this.lastRoll = DOUBLE_SKUNK;
 		}
 		else if (total == 3) {
-			this.lastRoll = SKUNK_DUECE ;
+			this.lastRoll = SKUNK_DEUCE ;
 		}
 		else if (value1 == 1 || value2 == 1) {
 			this.lastRoll = SKUNK;
