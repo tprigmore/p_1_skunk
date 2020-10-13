@@ -4,6 +4,9 @@ import edu.princeton.cs.introcs.StdOut;
 
 public class PredictableTurn
 {
+	private static final int SKUNK = -1;
+	private static final int SKUNK_DEUCE = -2;
+	private static final int DOUBLE_SKUNK = -4;
 	private Player player ;
 	private PredictableDice dice ;
 	private int runningTotal ;
@@ -31,14 +34,14 @@ public class PredictableTurn
 
 		int value = this.dice.getLastRoll();
 
-		if(value == -4) {
+		if(value == DOUBLE_SKUNK) {
 			this.player.setPoints(0);
 			this.player.setChips(this.player.getChips() - 4);
 		}
-		else if (value == -2) {
+		else if (value == SKUNK_DEUCE) {
 			this.player.setChips(this.player.getChips() - 2);
 			}
-		else if (value == -1) {
+		else if (value == SKUNK) {
 			this.player.setChips(this.player.getChips() - 1);
 		}
 		else {

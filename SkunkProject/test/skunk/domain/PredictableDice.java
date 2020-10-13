@@ -4,6 +4,9 @@ import edu.princeton.cs.introcs.StdOut;
 
 public class PredictableDice
 {
+	private static final int SKUNK = -1;
+	private static final int SKUNK_DEUCE = -2;
+	private static final int DOUBLE_SKUNK = -4;
 	private int lastRoll;
 	private PredictableDie die1;
 	private PredictableDie die2;
@@ -35,11 +38,11 @@ public class PredictableDice
 		total = value1 + value2 ;
 		
 		if ((value1 == 1) && (value2 == 1))
-			total = -4;
+			total = DOUBLE_SKUNK;
 		else if (3 == total)
-			total = -2;
+			total = SKUNK_DEUCE;
 		else if ((value1 == 1) || (value2 == 1))
-			total = -1;
+			total = SKUNK;
 		return total;
 	}
 
