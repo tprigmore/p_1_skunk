@@ -173,7 +173,7 @@ public class TestDie
 		Die die = new Die();
 		die.roll();
 		String string = die.toString();
-		StdOut.println(string);
+//		StdOut.println(string);
 		if (string.equals("Die: 1") || string.equals("Die: 2") || string.equals("Die: 3") ||  string.equals("Die: 4") || string.equals("Die: 5") || string.equals("Die: 6"))
 			result = true ;
 		assertTrue(result);
