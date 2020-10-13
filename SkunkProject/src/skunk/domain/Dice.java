@@ -13,6 +13,11 @@ import edu.princeton.cs.introcs.StdOut;
 
 public class Dice
 {
+	private static final int SKUNK = -1;
+
+	private static final int SKUNK_DUECE = -2;
+
+	private static final int DOUBLE_SKUNK = -4;
 	// Instance fields (variables) may be declared anywhere in class body
 	// Convention: put at top
 
@@ -51,10 +56,27 @@ public class Dice
 	{
 		// Roll each of die1, die2, sum their last rolls,
 		// then set Dice.lastRoll to this value
-
+		int value1;
+		int value2;
+		int total;
+		
 		die1.roll();
 		die2.roll();
-		this.lastRoll = die1.getLastRoll() + die2.getLastRoll();
+		value1 = die1.getLastRoll();
+		value2 = die2.getLastRoll();
+		total = value1 + value2;
+		if (total == 2) {
+			this.lastRoll = DOUBLE_SKUNK;
+		}
+		else if (total == 3) {
+			this.lastRoll = SKUNK_DUECE ;
+		}
+		else if (value1 == 1 || value2 == 1) {
+			this.lastRoll = SKUNK;
+		}
+		else {
+			this.lastRoll = total;
+		}
 
 	}
 
