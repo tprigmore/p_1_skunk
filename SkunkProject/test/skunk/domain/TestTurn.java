@@ -10,18 +10,34 @@ class TestTurn
 	@Test
 	void testTurnActivePlayer()
 	{
+		Dice dice = new Dice();
 		Player activePlayer = new Player("Scott");
-		Turn turn = new Turn(activePlayer);
+		Turn turn = new Turn(activePlayer, dice);
 		
-		assertEquals("Scott", turn.getActivePlayer().getName());
+		assertEquals("Scott", turn.getPlayer().getName());
 	}
 	
 	@Test
-	void testTurnTurnGetPlayer()
+	void testTurnGetPlayer()
 	{
+		Dice dice = new Dice();
 		Player activePlayer = new Player("Scott");
-		Turn turn = new Turn(activePlayer);
+		Turn turn = new Turn(activePlayer, dice);
 		
-		assertEquals(activePlayer, turn.getActivePlayer());
+		assertEquals(activePlayer, turn.getPlayer());
+	}
+	
+	@Test
+	void testTakeATurn()
+	{
+		boolean result = false;
+		Dice dice = new Dice();
+		Player activePlayer = new Player("Scott");
+		Turn turn = new Turn(activePlayer, dice);
+		int value = turn.takeATurn();
+		if(value >= -4 && value <= 12) {
+			result = true;
+		}
+		assertTrue(result);
 	}
 }

@@ -2,21 +2,63 @@ package skunk.domain;
 
 public class Turn
 {
-	private Player activePlayer ;
+	private static final int SKUNK = -1;
+	private static final int SKUNK_DEUCE = -2;
+	private static final int DOUBLE_SKUNK = -4;
+	private Player player;
+	private Dice dice;
+	private int runningTotal;
 
-	public Turn(Player activePlayer)
+	public Turn(Player player, Dice dice)
 	{
-		this.setActivePlayer(activePlayer);
+		this.player = player;
+		this.setRunningTotal(0);
+		this.dice = dice;
 	}
 
-	public Player getActivePlayer()
+	public void setPlayer(Player player)
 	{
-		return activePlayer;
+		this.player = player;
 	}
 
-	public void setActivePlayer(Player activePlayer)
+	public Player getPlayer()
 	{
-		this.activePlayer = activePlayer;
+		return this.player;
 	}
 
+	public int getRunningTotal()
+	{
+		return runningTotal;
+	}
+
+	public void setRunningTotal(int runningTotal)
+	{
+		this.runningTotal = runningTotal;
+	}
+
+	public int takeATurn()
+	{
+		this.dice.roll();
+
+		int value = this.dice.getLastRoll();
+
+		if (value == DOUBLE_SKUNK)
+		{
+			this.player.setPoints(0);
+			this.player.setChips(this.player.getChips() - 4);
+		}
+		else if (value == SKUNK_DEUCE)
+		{
+			this.player.setChips(this.player.getChips() - 2);
+		}
+		else if (value == SKUNK)
+		{
+			this.player.setChips(this.player.getChips() - 1);
+		}
+		else
+		{
+			this.setRunningTotal(this.getRunningTotal() + value);
+		}
+		return value;
+	}
 }
