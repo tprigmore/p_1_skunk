@@ -15,4 +15,15 @@ class TestGame
 		assertEquals("Player one",game.getPlayer());
 	}
 
+	@Test
+	public void test_gameDice()
+	{
+		boolean returnValue = false;
+		Game game = new Game();
+		int value = game.getDiceLastRoll();
+		if (value >= -4 || value <= 12)
+			returnValue = false;
+		assertTrue(returnValue);
+	}
+
 }
