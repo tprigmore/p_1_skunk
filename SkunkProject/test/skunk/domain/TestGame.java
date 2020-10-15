@@ -22,7 +22,7 @@ class TestGame
 		Game game = new Game();
 		int value = game.getDiceLastRoll();
 		if (value >= -4 || value <= 12)
-			returnValue = false;
+			returnValue = true;
 		assertTrue(returnValue);
 	}
 
