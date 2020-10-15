@@ -32,7 +32,7 @@ class TestGame
 		Game game = new Game();
 		assertEquals(0 , game.kitty.getKitty());
 		game.kitty.setKitty(4);
-		assertEquals(3 , game.kitty.getKitty());
+		assertEquals(4 , game.kitty.getKitty());
 	}
 
 }
