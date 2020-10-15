@@ -30,7 +30,7 @@ class TestGame
 	public void test_gameKitty()
 	{
 		Game game = new Game();
-		assertEquals(1 , game.kitty.getKitty());
+		assertEquals(0 , game.kitty.getKitty());
 	}
 
 }
