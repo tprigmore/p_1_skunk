@@ -25,5 +25,12 @@ class TestGame
 			returnValue = true;
 		assertTrue(returnValue);
 	}
+	
+	@Test
+	public void test_gameKitty()
+	{
+		Game game = new Game();
+		assertEquals(1 , game.kitty.getKitty());
+	}
 
 }
