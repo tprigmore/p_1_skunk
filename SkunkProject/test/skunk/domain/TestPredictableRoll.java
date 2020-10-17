@@ -15,5 +15,18 @@ class TestPredictableRoll
 		
 		assertEquals(2, roll.getLastRoll());
 	}
+	
+	@Test
+	void testPredictableSkunk()
+	{
+		PredictableRoll roll = new PredictableRoll();
+		roll.rollDice();
+		roll.rollDice();
+		roll.rollDice();	
+		roll.rollDice();		
+		roll.rollDice();		
+		
+		assertEquals(true, roll.isSkunk());
+	}
 
 }

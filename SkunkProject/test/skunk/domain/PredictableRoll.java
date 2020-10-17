@@ -22,6 +22,12 @@ public class PredictableRoll
 		return this.dice.getLastRoll();
 	}
 
+	public boolean isSkunk()
+	{
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 	
 	
 	

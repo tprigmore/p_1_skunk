@@ -21,7 +21,6 @@ public class PredictableDice
 		this.die1.roll();
 		this.die2.roll();
 		this.lastRoll = this.die1.getLastRoll() + this.die2.getLastRoll();
-
 	}
 
 	public int getLastRoll()
