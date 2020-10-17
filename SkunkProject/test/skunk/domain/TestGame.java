@@ -17,10 +17,10 @@ class TestGame
 		Game game = new Game();
 		game.addPlayer("Player one");
 		assertEquals("Player one",game.getPlayerName());
-		StdOut.println("Player one : " + game.getPlayerName());
+//		StdOut.println("Player one : " + game.getPlayerName());
 		game.setPlayerName("Fred");
 		assertEquals("Fred",game.getPlayerName());
-		StdOut.println("Fred : " + game.getPlayerName());
+//		StdOut.println("Fred : " + game.getPlayerName());
 	}
 
 
@@ -42,7 +42,7 @@ class TestGame
 		game.setKitty(4);
 		String state = game.takeATurn();
 		if (state == "Playing" || state == "Next Player") {
-			assertValue = false;
+			assertValue = true;
 		}
 		assertTrue(assertValue);
 	}
