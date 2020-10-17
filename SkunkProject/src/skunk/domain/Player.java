@@ -3,7 +3,8 @@ package skunk.domain;
 public class Player
 {
 	private String name ;
-	private int points ;
+	private int gamePoints ;
+	private int turnPoints ;
 	private int chips ;
 	
 	public Player()
@@ -14,7 +15,8 @@ public class Player
 	public Player(String name)
 	{
 		this.name = name;
-		this.points = 0;
+		this.gamePoints = 0;
+		this.turnPoints = 0;
 		this.chips = 0;
 	}
 
@@ -24,14 +26,25 @@ public class Player
 		return this.name;
 	}
 
-	public void setPoints(int points)
+	public void setGamePoints(int points)
 	{
-		this.points = points;
+		this.gamePoints = points;
 	}
 
-	public int getPoints()
+	public int getGamePoints()
 	{
-		return this.points;
+		return this.gamePoints;
+	}
+
+
+	public void setTurnPoints(int points)
+	{
+		this.turnPoints = points;
+	}
+
+	public int getTurnPoints()
+	{
+		return this.turnPoints;
 	}
 
 	public Integer getChips()
@@ -42,5 +55,10 @@ public class Player
 	public void setChips(int chips)
 	{
 		this.chips = chips;
+	}
+
+	public void setName(String name)
+	{
+		this.name = name;
 	}
 }
