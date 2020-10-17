@@ -16,7 +16,7 @@ class TestDice
 			Dice dice = new Dice();
 			dice.roll();
 			int value = dice.getLastRoll();
-			boolean result = (value >= -4 || value <= 12);
+			boolean result = (value >= 2 || value <= 12);
 			assertTrue(result);
 		}
 	}
