@@ -31,6 +31,16 @@ class TestTurn
 	}
 	
 	@Test
+	void testRunningTotal()
+	{
+
+		Player activePlayer = new Player("Scott");
+		Kitty kitty = new Kitty();
+		Turn turn = new Turn(activePlayer, kitty);
+		
+		assertEquals(0, turn.getRunningTotal());
+	}
+	@Test
 	void testTakeATurn()
 	{
 		boolean result = false;
