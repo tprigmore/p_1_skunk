@@ -15,7 +15,17 @@ class TestPredictableTurn
 		Player player1 = new Player("Scott");
 		Kitty kitty = new Kitty();
 		PredictableTurn turn = new PredictableTurn(player1, kitty);
-		assertEquals(true, turn.takeATurn());
+		assertEquals(false, turn.takeATurn());
+	}
+	
+	@Test
+	void test_predictable_turn2()
+	{
+		Player player1 = new Player("Scott");
+		Kitty kitty = new Kitty();
+		PredictableTurn turn = new PredictableTurn(player1, kitty);
+		turn.takeATurn();
+		assertEquals(false, turn.takeATurn());
 	}
 
 }
