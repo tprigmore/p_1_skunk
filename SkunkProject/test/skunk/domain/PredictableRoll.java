@@ -24,8 +24,11 @@ public class PredictableRoll
 
 	public boolean isSkunk()
 	{
-		// TODO Auto-generated method stub
-		return true;
+		boolean retValue = false;
+		if (this.dice.getDie1LastRoll() == 1 || this.dice.getDie2LastRoll() == 1) {
+			retValue = true;
+		}
+		return retValue;
 	}
 
 	

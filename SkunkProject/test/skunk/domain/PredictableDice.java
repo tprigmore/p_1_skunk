@@ -28,4 +28,14 @@ public class PredictableDice
 		return this.lastRoll;
 	}
 
+	public int getDie1LastRoll()
+	{
+		return this.die1.getLastRoll() ;
+	}
+
+	public int getDie2LastRoll()
+	{
+		return this.die2.getLastRoll() ;
+	}
+
 }
