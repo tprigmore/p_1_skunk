@@ -16,13 +16,20 @@ class TestPlayer
 	}
 	
 	@Test
-	void test_player_set_get_points()
+	void test_player_set_get_game_points()
 	{
 		Player player1 = new Player("Scott");
-		player1.setPoints(13);
-		assertEquals(13, player1.getPoints());	
+		player1.setGamePoints(13);
+		assertEquals(13, player1.getGamePoints());	
 	}
 	
+	@Test
+	void test_player_set_get_turn_points()
+	{
+		Player player1 = new Player("Scott");
+		assertEquals(0, player1.getTurnPoints());	
+	}
+
 	@Test
 	void test_player_set_get_chips()
 	{
