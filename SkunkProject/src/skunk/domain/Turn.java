@@ -12,7 +12,7 @@ public class Turn
 
 	public Turn(Player player, Kitty kitty)
 	{
-		this.player = player;
+		this.setPlayer(player);
 		this.setRunningTotal(0);
 		this.roll = new Roll() ;
 		this.kitty = kitty;
