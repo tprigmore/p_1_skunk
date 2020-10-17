@@ -25,7 +25,7 @@ class TestPredictableTurn
 		Kitty kitty = new Kitty();
 		PredictableTurn turn = new PredictableTurn(player1, kitty);
 		turn.takeATurn();
-		assertEquals(false, turn.takeATurn());
+		assertEquals(true, turn.takeATurn());
 	}
 
 }
