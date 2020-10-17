@@ -25,7 +25,7 @@ public class PredictableRoll
 	public boolean isSkunk()
 	{
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	
