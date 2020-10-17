@@ -1,16 +1,16 @@
 package skunk.domain;
 
-public class PredictableRoll
+public class Roll
 {
 	private static final int SKUNK = -1;
 	private static final int SKUNK_DEUCE = -2;
 	private static final int DOUBLE_SKUNK = -4;
 
-	private PredictableDice dice;
+	private Dice dice;
 
-	public PredictableRoll()
+	public Roll()
 	{
-		this.dice = new PredictableDice();
+		this.dice = new Dice();
 	}
 	
 	public void rollDice() {

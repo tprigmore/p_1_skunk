@@ -90,4 +90,14 @@ public class Dice
 		StdOut.println("Actual count: " + doubleSkunkCount);
 		StdOut.println("Expected count: " + (NUM_TRIALS / 36.0));
 	}
+
+	public int getDie1LastRoll()
+	{
+		return die1.getLastRoll();
+	}
+	
+	public int getDie2LastRoll()
+	{
+		return die2.getLastRoll();
+	}
 }

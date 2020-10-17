@@ -2,18 +2,20 @@ package skunk.domain;
 
 public class Turn
 {
-	private static final int SKUNK = -1;
-	private static final int SKUNK_DEUCE = -2;
-	private static final int DOUBLE_SKUNK = -4;
-	private Player player;
-	private Dice dice;
-	private int runningTotal;
+	private static final int SKUNK_DEUCE = 3;
+	private static final int DOUBLE_SKUNK = 2;
+	
+	private Player player ;
+	private Roll roll ;
+	private int runningTotal ;
+	private Kitty kitty;
 
-	public Turn(Player player, Dice dice)
+	public Turn(Player player, Kitty kitty)
 	{
 		this.player = player;
 		this.setRunningTotal(0);
-		this.dice = dice;
+		this.roll = new Roll() ;
+		this.kitty = kitty;
 	}
 
 	public void setPlayer(Player player)
@@ -26,6 +28,34 @@ public class Turn
 		return this.player;
 	}
 
+	public boolean takeATurn()
+	{
+		boolean retValue = false ;
+		
+		this.roll.rollDice();
+
+		int value = this.roll.getLastRoll();
+
+		if(value == DOUBLE_SKUNK) {
+			this.player.setPoints(0);
+			this.player.setChips(this.player.getChips() - 4);
+			this.kitty.setKitty(this.kitty.getKitty() + 4); 
+		}
+		else if (value == SKUNK_DEUCE) {
+			this.player.setChips(this.player.getChips() - 2);
+			this.kitty.setKitty(this.kitty.getKitty() + 2); 
+			}
+		else if (roll.isSkunk()) {
+			this.player.setChips(this.player.getChips() - 1);
+			this.kitty.setKitty(this.kitty.getKitty() + 1); 
+		}
+		else {
+			this.setRunningTotal(this.getRunningTotal() + value) ;
+			retValue = true;
+		}
+		return retValue ;
+	}
+
 	public int getRunningTotal()
 	{
 		return runningTotal;
@@ -35,30 +65,5 @@ public class Turn
 	{
 		this.runningTotal = runningTotal;
 	}
-
-	public int takeATurn()
-	{
-		this.dice.roll();
-
-		int value = this.dice.getLastRoll();
-
-		if (value == DOUBLE_SKUNK)
-		{
-			this.player.setPoints(0);
-			this.player.setChips(this.player.getChips() - 4);
-		}
-		else if (value == SKUNK_DEUCE)
-		{
-			this.player.setChips(this.player.getChips() - 2);
-		}
-		else if (value == SKUNK)
-		{
-			this.player.setChips(this.player.getChips() - 1);
-		}
-		else
-		{
-			this.setRunningTotal(this.getRunningTotal() + value);
-		}
-		return value;
-	}
 }
+
