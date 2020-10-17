@@ -7,13 +7,11 @@ public class Turn
 	
 	private Player player ;
 	private Roll roll ;
-	private int runningTotal ;
 	private Kitty kitty;
 
 	public Turn(Player player, Kitty kitty)
 	{
 		this.setPlayer(player);
-		this.setRunningTotal(0);
 		this.roll = new Roll() ;
 		this.kitty = kitty;
 	}
@@ -37,20 +35,23 @@ public class Turn
 		int value = this.roll.getLastRoll();
 
 		if(value == DOUBLE_SKUNK) {
-			this.player.setPoints(0);
+			this.player.setGamePoints(0);
+			this.player.setTurnPoints(0);
 			this.player.setChips(this.player.getChips() - 4);
 			this.kitty.setKitty(this.kitty.getKitty() + 4); 
 		}
 		else if (value == SKUNK_DEUCE) {
+			this.player.setTurnPoints(0);
 			this.player.setChips(this.player.getChips() - 2);
 			this.kitty.setKitty(this.kitty.getKitty() + 2); 
 			}
 		else if (roll.isSkunk()) {
+			this.player.setTurnPoints(0);
 			this.player.setChips(this.player.getChips() - 1);
 			this.kitty.setKitty(this.kitty.getKitty() + 1); 
 		}
 		else {
-			this.setRunningTotal(this.getRunningTotal() + value) ;
+			this.player.setTurnPoints(this.player.getTurnPoints() + value) ;
 			retValue = true;
 		}
 		return retValue ;
@@ -58,12 +59,8 @@ public class Turn
 
 	public int getRunningTotal()
 	{
-		return runningTotal;
+		return this.player.getTurnPoints();
 	}
 
-	public void setRunningTotal(int runningTotal)
-	{
-		this.runningTotal = runningTotal;
-	}
 }
 
