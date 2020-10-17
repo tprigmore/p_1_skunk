@@ -8,9 +8,12 @@ class TestPredictableRoll
 {
 
 	@Test
-	void test()
+	void testPredictableRollDoubleSkunk()
 	{
-		fail("Not yet implemented");
+		PredictableRoll roll = new PredictableRoll();
+		roll.rollDice();
+		
+		assertEquals(2, roll.getLastRoll());
 	}
 
 }
