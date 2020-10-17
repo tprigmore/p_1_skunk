@@ -48,8 +48,8 @@ class TestTurn
 				failCount += 1;
 			}
 		}
-		StdOut.println("Fail count : " + failCount);
-		StdOut.println("Pass count : " + passCount);
+//		StdOut.println("Fail count : " + failCount);
+//		StdOut.println("Pass count : " + passCount);
 		
 		if ((failCount >= 250) && (passCount >=600)) {
 			result = true;

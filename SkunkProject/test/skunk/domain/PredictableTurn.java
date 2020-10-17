@@ -39,7 +39,7 @@ public class PredictableTurn
 		int value = this.roll.getLastRoll();
 
 		if(value == DOUBLE_SKUNK) {
-			this.player.setPoints(0);
+			this.player.setGamePoints(0);
 			this.player.setChips(this.player.getChips() - 4);
 			this.kitty.setKitty(this.kitty.getKitty() + 4); 
 		}

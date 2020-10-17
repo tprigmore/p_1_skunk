@@ -36,7 +36,6 @@ public class Game
 	{
 		Player player = new Player(name);
 		this.playerArray.add(player);
-		this.playerIndex++;
 		this.playerCount++;
 	}
 
