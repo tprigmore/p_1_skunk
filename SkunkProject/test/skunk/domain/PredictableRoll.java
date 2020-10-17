@@ -2,6 +2,10 @@ package skunk.domain;
 
 public class PredictableRoll
 {
+	private static final int SKUNK = -1;
+	private static final int SKUNK_DEUCE = -2;
+	private static final int DOUBLE_SKUNK = -4;
+
 	private PredictableDice dice;
 
 	public PredictableRoll()
@@ -15,8 +19,7 @@ public class PredictableRoll
 
 	public int getLastRoll()
 	{
-		// TODO Auto-generated method stub
-		return 0;
+		return this.dice.getLastRoll();
 	}
 
 	
