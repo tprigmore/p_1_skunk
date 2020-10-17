@@ -65,7 +65,7 @@ class TestDice
 		{
 			dice.roll();
 			value = dice.getLastRoll();
-			if (value == -4)
+			if (value == 2)
 			{
 				flag = true;
 				break;
@@ -85,7 +85,7 @@ class TestDice
 		{
 			dice.roll();
 			value = dice.getLastRoll();
-			if (value == -2)
+			if (value == 3)
 			{
 				flag = true;
 				break;
