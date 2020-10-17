@@ -12,7 +12,9 @@ class TestGame
 	public void test_gamePlayer()
 	{
 		Game game = new Game();
-		assertEquals("Player one",game.getPlayer());
+		assertEquals("Player one",game.getPlayerName());
+		game.setPlayerName("Fred");
+		assertEquals("Fred",game.getPlayerName());
 	}
 
 
@@ -24,5 +26,14 @@ class TestGame
 		game.kitty.setKitty(4);
 		assertEquals(4 , game.kitty.getKitty());
 	}
+	
+	@Test
+	public void test_gameturn()
+	{
+		Game game = new Game();
+		game.kitty.setKitty(4);
+		game.turn.takeATrun();
+	}
+
 
 }

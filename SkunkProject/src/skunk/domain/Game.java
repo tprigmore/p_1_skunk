@@ -1,19 +1,76 @@
 package skunk.domain;
+import java.util.ArrayList;
 
 public class Game
 {
-	private Player player1 ;
-	public Kitty kitty;
+	private ArrayList<Player> playerArray = new ArrayList<Player>() ;
+	private Player activePlayer;
+	private Kitty kitty;
+	private Turn turn;
+	private int playerCount;
+	private int playerIndex;
+	private String gameState;
 	
 	public Game() {
-		this.player1 = new Player("Player one");
+		this.playerCount = 0;
+		this.playerIndex = 0;
 		this.kitty = new Kitty();
+		this.gameState = "Setup";
 	}
 
-	public String getPlayer()
+	public String getPlayerName()
 	{
-		return this.player1.getName();
+		Player player;
+		player = this.playerArray.get(playerIndex);
+		return player.getName();
 	}
 
+	public void setPlayerName(String name)
+	{
+		Player player;
+		player = this.playerArray.get(playerIndex);
+		player.setName(name);
+	}
+	
+	public void addPlayer(String name)
+	{
+		Player player = new Player(name);
+		this.playerArray.add(player);
+		this.playerIndex++;
+		this.playerCount++;
+	}
+
+	public void setKitty(int chips)
+	{
+		this.kitty.setKitty(chips);
+	}
+
+	public int getKitty()
+	{
+		return this.kitty.getKitty();
+	}
+
+	public void goToNextPlayer() 	{
+		playerIndex++;
+		if(playerIndex == playerCount) {
+			playerIndex = 0;
+		}
+		this.gameState = "Playing";
+	}
+	
+	public String takeATurn()
+	{
+		this.gameState = "Playing";
+		this.activePlayer = this.playerArray.get(playerIndex);
+		this.turn = new Turn(this.activePlayer, this.kitty);
+		if (!turn.takeATurn()) {
+			this.goToNextPlayer();
+			this.gameState = "Next Player";
+		}
+		if (this.activePlayer.getGamePoints() >= 100) {
+			this.gameState = "Over One Hundred";
+		}
+		return this.gameState;
+	}
 
 }
