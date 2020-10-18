@@ -31,7 +31,8 @@ public class Game
 		player = this.playerArray.get(playerIndex);
 		player.setName(name);
 	}
-	
+
+
 	public void addPlayer(String name)
 	{
 		Player player = new Player(name);
@@ -55,6 +56,20 @@ public class Game
 			playerIndex = 0;
 		}
 		this.gameState = "Playing";
+	}
+	
+	public int getPlayerGamePoints()
+	{
+		Player player;
+		player = this.playerArray.get(playerIndex);
+		return player.getGamePoints();
+	}
+
+	public void SavePlayerPoints() 	{
+		int points = this.activePlayer.getTurnPoints();
+		points += this.activePlayer.getGamePoints();
+		this.activePlayer.setGamePoints(points);
+		this.activePlayer.setTurnPoints(0);
 	}
 	
 	public String takeATurn()
