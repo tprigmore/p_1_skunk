@@ -53,12 +53,12 @@ class TestGame
 			count++;
 			if (game.takeATurn()) {
 				if (game.getRunningTotal() > 20) {
-					game.SavePlayerPoints();
 					game.goToNextPlayer();
-					StdOut.println("Running Points: " + game.getRunningTotal());
+//					StdOut.println(game.getPlayerName() + " game points: " + game.getPlayerGamePoints());
 				}
 			} 
 			else {
+//				StdOut.println(game.getPlayerName() + " game points: " + game.getPlayerGamePoints());
 				game.goToNextPlayer();
 			}
 			if(game.getPlayerGamePoints() > 100) {

@@ -1,5 +1,7 @@
 package skunk.domain;
 
+import edu.princeton.cs.introcs.StdOut;
+
 public class Turn
 {
 	private static final int SKUNK_DEUCE = 3;
@@ -33,7 +35,6 @@ public class Turn
 		this.roll.rollDice();
 
 		int value = this.roll.getLastRoll();
-
 		if(value == DOUBLE_SKUNK) {
 			this.player.setGamePoints(0);
 			this.player.setTurnPoints(0);
