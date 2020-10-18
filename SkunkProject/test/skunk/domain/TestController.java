@@ -8,7 +8,7 @@ class TestController
 {
 
 	@Test
-	void test()
+	void test_controller_state()
 	{
 		fail("Not yet implemented");
 	}
