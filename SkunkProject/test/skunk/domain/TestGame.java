@@ -34,15 +34,6 @@ class TestGame
 	}
 	
 	@Test
-	public void test_gameturn()
-	{
-		Game game = new Game();
-		game.addPlayer("Player one");
-		game.setKitty(4);
-		assertTrue(game.takeATurn());
-	}
-
-	@Test
 	public void test_gameForWinner()
 	{
 		boolean assertValue = false;
