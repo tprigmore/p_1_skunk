@@ -36,50 +36,34 @@ class TestGame
 	@Test
 	public void test_gameturn()
 	{
-		boolean assertValue = false;
 		Game game = new Game();
 		game.addPlayer("Player one");
 		game.setKitty(4);
-		String state = game.takeATurn();
-		if (state == "Playing" || state == "Next Player") {
-			assertValue = true;
-		}
-		assertTrue(assertValue);
+		assertTrue(game.takeATurn());
 	}
 
 	@Test
 	public void test_gameForWinner()
 	{
 		boolean assertValue = false;
-		String state = "Playing" ;
 		int count = 0;
 		Game game = new Game();
 		game.addPlayer("Player one");
 		while (count < 100) {
-			state = game.takeATurn();
 			count++;
-			if (state == "Playing" ) {
-				if (game.getPlayerGamePoints() > 20) {
+			if (game.takeATurn()) {
+				if (game.getRunningTotal() > 20) {
 					game.SavePlayerPoints();
 					game.goToNextPlayer();
-					StdOut.println("No match to text");
-					StdOut.println("Game Points: " + game.getPlayerGamePoints());
-
+					StdOut.println("Running Points: " + game.getRunningTotal());
 				}
 			} 
-			else if (state == "Next Player") {
-				game.goToNextPlayer();
-				StdOut.println("Lost ");
-			}
 			else {
-				if (state == "Over One Hundred") {
-					StdOut.println("Winner");
-
-					assertValue = true;
-					}
-				else {
-					StdOut.println("No match to text");
-				}
+				game.goToNextPlayer();
+			}
+			if(game.getPlayerGamePoints() > 100) {
+				assertValue = true;
+				break;
 			}
 		}
 
