@@ -10,7 +10,8 @@ class TestController
 	@Test
 	void test_controller_state()
 	{
-		fail("Not yet implemented");
+		Controller controller = new Controller();
+		
 	}
 
 }

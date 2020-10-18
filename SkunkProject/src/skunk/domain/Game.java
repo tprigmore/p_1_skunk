@@ -1,21 +1,21 @@
 package skunk.domain;
+
 import java.util.ArrayList;
 
 public class Game
 {
-	private ArrayList<Player> playerArray = new ArrayList<Player>() ;
+	private ArrayList<Player> playerArray = new ArrayList<Player>();
 	private Player activePlayer;
 	private Kitty kitty;
 	private Turn turn;
 	private int playerCount;
 	private int playerIndex;
-	private String gameState;
-	
-	public Game() {
+
+	public Game()
+	{
 		this.playerCount = 0;
 		this.playerIndex = 0;
 		this.kitty = new Kitty();
-		this.gameState = "Setup";
 	}
 
 	public String getPlayerName()
@@ -32,6 +32,27 @@ public class Game
 		player.setName(name);
 	}
 
+	public int getRunningTotal()
+	{
+		Player player;
+		player = this.playerArray.get(playerIndex);
+		return (player.getTurnPoints());
+	}
+
+	public int getPlayerCount()
+	{
+		return (this.playerCount);
+	}
+
+	public int getPlayerIndex()
+	{
+		return (this.playerIndex);
+	}
+
+	public void setPlayerIndex(int index)
+	{
+		this.playerIndex = index;
+	}
 
 	public void addPlayer(String name)
 	{
@@ -50,14 +71,18 @@ public class Game
 		return this.kitty.getKitty();
 	}
 
-	public void goToNextPlayer() 	{
+	public boolean goToNextPlayer()
+	{
+		boolean retValue = true ;
 		playerIndex++;
-		if(playerIndex == playerCount) {
+		if (playerIndex == playerCount)
+		{
 			playerIndex = 0;
+			retValue = false;
 		}
-		this.gameState = "Playing";
+		return retValue;
 	}
-	
+
 	public int getPlayerGamePoints()
 	{
 		Player player;
@@ -65,26 +90,24 @@ public class Game
 		return player.getGamePoints();
 	}
 
-	public void SavePlayerPoints() 	{
+	public void SavePlayerPoints()
+	{
 		int points = this.activePlayer.getTurnPoints();
 		points += this.activePlayer.getGamePoints();
 		this.activePlayer.setGamePoints(points);
 		this.activePlayer.setTurnPoints(0);
 	}
-	
-	public String takeATurn()
+
+	public boolean takeATurn()
 	{
-		this.gameState = "Playing";
 		this.activePlayer = this.playerArray.get(playerIndex);
 		this.turn = new Turn(this.activePlayer, this.kitty);
-		if (!turn.takeATurn()) {
-			this.goToNextPlayer();
-			this.gameState = "Next Player";
-		}
-		if (this.activePlayer.getGamePoints() >= 100) {
-			this.gameState = "Over One Hundred";
-		}
-		return this.gameState;
+		return (turn.takeATurn());
+	}
+
+	public int getPlayerChips()
+	{
+		return this.getPlayerChips();
 	}
 
 }
