@@ -79,14 +79,16 @@ public class SkunkApp
 	private static void setupGame(Controller controller)
 	{
 		String answer = "y";
-		while (answer == "y")
+		StdOut.println("--------------------------------------------------");
+		while (answer.equals("y"))
 		{
 			answer = askQuestion("Enter player name: ");
 			StdOut.println("You typed : " + answer);
 			controller.addPlayer(answer);
-			answer = askQuestion("Add another player (y/n)?: ");
+			answer = askQuestion("Add another player (y/n)? ");
 			answer.toLowerCase();
 		}
+		StdOut.println("--------------------------------------------------");
 	}
 
 	private static boolean playRound(Controller controller)
@@ -95,15 +97,24 @@ public class SkunkApp
 		boolean roundActive = true;
 		while (roundActive)
 		{
-			while (answer == "y")
+			while (answer.equals("y"))
 			{
 				if (controller.takeATurn())
 				{
-					answer = askQuestion(controller.getPlayerName() + "'s turn Score is " + controller.getRunningTotal()
-							+ ". Play again (y/n)?");
+					StdOut.print(controller.getPlayerName() + "'s turn. ");
+					StdOut.print("Score is " + controller.getRunningTotal());
+					answer = askQuestion(". Roll again (y/n)?");
+				}
+				else {
+					StdOut.print(controller.getPlayerName() + "'s turn. ");
+					StdOut.println("Got a " + controller.getTheDiceValues());
+					answer = "n";
 				}
 			}
+			StdOut.println(" ");
+
 			roundActive = controller.goToNextPlayer();
+			answer = "y";
 		}
 
 		return false;
@@ -115,7 +126,7 @@ public class SkunkApp
 		boolean roundActive = true;
 		while (roundActive)
 		{
-			while (answer == "y")
+			while (answer.equals("y"))
 			{
 				if (controller.takeATurn())
 				{
@@ -138,8 +149,10 @@ public class SkunkApp
 		for (int i = 0; i < controller.getPlayerCount(); i++)
 		{
 			controller.setPlayerIndex(i);
-			StdOut.println(controller.getPlayerName() + ": turn=" + controller.getRunningTotal() + " game="
-					+ controller.getPlayerGamePoints() + " chips=" + controller.getPlayerChips());
+			StdOut.print(controller.getPlayerName());
+			StdOut.print(": turn=" + controller.getRunningTotal());
+		    StdOut.print(" game=" + controller.getPlayerGamePoints());
+		    StdOut.println(" chips=" + controller.getPlayerChips());
 			if (controller.getRunningTotal() > 100)
 			{
 				retValue = false;

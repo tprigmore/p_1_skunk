@@ -31,4 +31,9 @@ public class Roll
 		return retValue;
 	}
 
+	public String getTheDiceValues()
+	{
+		return (this.dice.getLastRoll() + " Die1 = " + this.dice.getDie1LastRoll() + " Die2 = " + this.dice.getDie2LastRoll());
+	}
+
 }

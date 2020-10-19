@@ -17,7 +17,7 @@ public class Player
 		this.name = name;
 		this.gamePoints = 0;
 		this.turnPoints = 0;
-		this.chips = 0;
+		this.chips = 50;
 	}
 
 	public String getName()
@@ -47,7 +47,7 @@ public class Player
 		return this.turnPoints;
 	}
 
-	public Integer getChips()
+	public int getChips()
 	{
 		return this.chips;
 	}

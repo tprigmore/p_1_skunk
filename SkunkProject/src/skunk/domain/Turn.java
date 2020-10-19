@@ -63,5 +63,10 @@ public class Turn
 		return this.player.getTurnPoints();
 	}
 
+	public String getTheDiceValues()
+	{
+		return this.roll.getTheDiceValues();
+	}
+
 }
 

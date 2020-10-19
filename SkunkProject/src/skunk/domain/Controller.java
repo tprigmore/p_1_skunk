@@ -11,50 +11,54 @@ public class Controller
 	}
 	
 	public void addPlayer(String name) {
-		game.addPlayer(name);
+		this.game.addPlayer(name);
 	}
 	
 	public String getPlayerName() {
-		return game.getPlayerName();
+		return this.game.getPlayerName();
 	}
 
 	public int getRunningTotal() {
-		return game.getRunningTotal();
+		return this.game.getRunningTotal();
 	}
 
 	public boolean takeATurn() {
-		return game.takeATurn();
+		return this.game.takeATurn();
 	}
 
 	public boolean goToNextPlayer()
 	{
-		return game.goToNextPlayer();
+		return this.game.goToNextPlayer();
 	}
 
 	public int getPlayerCount()
 	{
-		return game.getPlayerCount();
+		return this.game.getPlayerCount();
 	}
 
 	public int getPlayerIndex()
 	{
-		return game.getPlayerIndex();
+		return this.game.getPlayerIndex();
 	}
 
 	public void setPlayerIndex(int index)
 	{
-		game.setPlayerIndex(index);
+		this.game.setPlayerIndex(index);
 	}
 
 	public int getPlayerGamePoints()
 	{
-		return game.getPlayerGamePoints();
+		return this.game.getPlayerGamePoints();
 	}
 
 	public int getPlayerChips()
 	{
-		// TODO Auto-generated method stub
-		return game.getPlayerChips();
+		return this.game.getPlayerChips();
+	}
+
+	public String getTheDiceValues()
+	{
+		return this.game.getTheDiceValues();
 	}
 
 }

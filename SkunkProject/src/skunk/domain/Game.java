@@ -106,7 +106,12 @@ public class Game
 
 	public int getPlayerChips()
 	{
-		return this.getPlayerChips();
+		return this.activePlayer.getChips();
+	}
+
+	public String getTheDiceValues()
+	{
+		return this.turn.getTheDiceValues();
 	}
 
 }
