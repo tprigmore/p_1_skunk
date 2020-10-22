@@ -1,5 +1,7 @@
 package skunk.domain;
 
+import edu.princeton.cs.introcs.StdOut;
+
 public class Controller
 {
 	private String state;
@@ -70,9 +72,9 @@ public class Controller
 		return(this.getPlayerGamePoints() + this.getRunningTotal() >= 100) ;
 	}
 
-	public int findTheWinner()
+	public String findTheWinner()
 	{
-		int highIndex = 0;
+		int winnerIndex = 0;
 		int maxPoints = 0;
 		int points;
 		for(int i = 0; i < game.getPlayerCount(); i++) {
@@ -80,22 +82,24 @@ public class Controller
 			points = game.getPlayerGamePoints();
 			if (points > maxPoints) {
 				maxPoints = points;
-				highIndex = i;
+				winnerIndex = i;
 			}
 		}
-		return highIndex;
+		this.setPlayerIndex(winnerIndex);
+		this.giveWinnerKitty();
+
+		return this.getPlayerName();
 	}
 
 	public int getKittyChips()
 	{
-		return game.getKitty();
+		return this.game.getKitty();
 	}
 
 	public void giveWinnerKitty()
 	{
-		game.setPlayerChips(game.getPlayerChips() + game.getKitty());
-
-		
+		this.game.setPlayerChips(this.game.getPlayerChips() + this.game.getKitty());
+		this.game.setKitty(0);
 	}
 
 }

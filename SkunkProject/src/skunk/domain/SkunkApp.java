@@ -110,19 +110,7 @@ public class SkunkApp
 		{
 			while (answer.equals("y"))
 			{
-				if (controller.takeATurn())
-				{
-					StdOut.print(controller.getPlayerName() );
-					StdOut.print("'s turn score is " + controller.getRunningTotal());
-					StdOut.print(" Game points are " + controller.getPlayerGamePoints());
-					answer = askQuestion(". Roll again (y/n)?");
-				}
-				else
-				{
-					StdOut.print(controller.getPlayerName() + "'s turn. ");
-					StdOut.println("Got a " + controller.getTheDiceValues());
-					answer = "n";
-				}
+				answer = takeATrun(controller);
 			}
 			StdOut.println(" ");
 			
@@ -167,19 +155,7 @@ public class SkunkApp
 		{
 			while (answer.equals("y"))
 			{
-				if (controller.takeATurn())
-				{
-					StdOut.print(controller.getPlayerName());
-					StdOut.print("'s turn score is " + controller.getRunningTotal());
-					StdOut.print(" Game points are " + controller.getPlayerGamePoints());
-					answer = askQuestion(". Roll again (y/n)?");
-				}
-				else
-				{
-					StdOut.print(controller.getPlayerName() + "'s turn. ");
-					StdOut.println("Got a " + controller.getTheDiceValues());
-					answer = "n";
-				}
+				answer = takeATrun(controller);
 			}
 			StdOut.println(" ");
 			controller.goToNextPlayer();
@@ -190,6 +166,25 @@ public class SkunkApp
 		}
 
 		return false;
+	}
+
+	private static String takeATrun(Controller controller)
+	{
+		String answer;
+		StdOut.print(controller.getPlayerName() + "'s turn. ");
+
+		if (controller.takeATurn())
+		{
+			StdOut.print(" score is " + controller.getRunningTotal());
+			StdOut.print(" Game points are " + controller.getPlayerGamePoints());
+			answer = askQuestion(". Roll again (y/n)?");
+		}
+		else
+		{
+			StdOut.println("Got a " + controller.getTheDiceValues());
+			answer = "n";
+		}
+		return answer;
 	}
 
 	private static boolean printRoundStats(Controller controller)
@@ -210,6 +205,8 @@ public class SkunkApp
 				retValue = false;
 			}
 		}
+		StdOut.println("Kitty has " + controller.getKittyChips() + " chips.");
+
 //		StdOut.println("---------------------------------------------------");
 
 		controller.setPlayerIndex(currentIndex);
@@ -220,10 +217,7 @@ public class SkunkApp
 	{
 	
 		StdOut.println("-------------------Final Score--------------------");
-		int winnerIndex = controller.findTheWinner();
-		controller.setPlayerIndex(winnerIndex);
-		StdOut.println("The winner is " + controller.getPlayerName());
-		controller.giveWinnerKitty();
+		StdOut.println("The winner is " + controller.findTheWinner());
 		printRoundStats(controller);
 		StdOut.println("Game Over");
 	}

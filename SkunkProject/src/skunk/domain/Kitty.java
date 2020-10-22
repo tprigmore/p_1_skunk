@@ -18,6 +18,6 @@ public class Kitty
 	public void setKitty(int chips)
 	{
 
-		this.kitty += chips;
+		this.kitty = chips;
 	}
 }
