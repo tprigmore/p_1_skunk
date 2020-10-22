@@ -14,11 +14,21 @@ public class SkunkApp
 	{
 
 		State state = State.SETUP;
-		StdOut.println("Welcome to the game skunk! Version 1.0");
-
 		Controller controller = new Controller();
+
+		StdOut.println("----------------------------------------------------");
+		StdOut.println("--   Welcome to the game skunk! Version 1.0       --");
+		StdOut.println("----------------------------------------------------\n\n");
+		if(askQuestion("Do you want to play skunk? (y/n) ").equals("y")) {
+			state = State.SETUP;
+		}
+		else {
+			state = State.DONE;
+		}
+
 		while (state != State.DONE)
 		{
+			
 			switch (state)
 			{
 			case SETUP:
@@ -56,16 +66,16 @@ public class SkunkApp
 				}
 				break;
 			case GAME_END:
-				playLastRound(controller);
-				StdOut.println("Game Over");
+				gameOver(controller);
+				state = State.DONE;
 				break;
-	
+
 			default:
 				state = State.DONE;
 				break;
 			}
-
 		}
+		StdOut.println("BYE");
 	}
 
 	private static String askQuestion(String question)
@@ -79,41 +89,53 @@ public class SkunkApp
 	private static void setupGame(Controller controller)
 	{
 		String answer = "y";
-		StdOut.println("--------------------------------------------------");
+		StdOut.println("\n--------------------------------------------------");
 		while (answer.equals("y"))
 		{
 			answer = askQuestion("Enter player name: ");
-			StdOut.println("You typed : " + answer);
+			StdOut.println("You typed : " + answer + "\n");
 			controller.addPlayer(answer);
 			answer = askQuestion("Add another player (y/n)? ");
 			answer.toLowerCase();
 		}
-		StdOut.println("--------------------------------------------------");
 	}
 
 	private static boolean playRound(Controller controller)
 	{
 		String answer = "y";
 		boolean roundActive = true;
+		StdOut.println("------------ Next Round ---------------------------");
+
 		while (roundActive)
 		{
 			while (answer.equals("y"))
 			{
 				if (controller.takeATurn())
 				{
-					StdOut.print(controller.getPlayerName() + "'s turn. ");
-					StdOut.print("Score is " + controller.getRunningTotal());
+					StdOut.print(controller.getPlayerName() );
+					StdOut.print("'s turn score is " + controller.getRunningTotal());
+					StdOut.print(" Game points are " + controller.getPlayerGamePoints());
 					answer = askQuestion(". Roll again (y/n)?");
 				}
-				else {
+				else
+				{
 					StdOut.print(controller.getPlayerName() + "'s turn. ");
 					StdOut.println("Got a " + controller.getTheDiceValues());
 					answer = "n";
 				}
 			}
 			StdOut.println(" ");
-
-			roundActive = controller.goToNextPlayer();
+			
+			if (controller.isPlayerOver100())
+			{
+				StdOut.println("!!!!!! " + controller.getPlayerName() + " is over 100. Playing last round!!!!!!");
+				roundActive = false;
+				controller.goToNextPlayer();
+			}
+			else
+			{
+				roundActive = controller.goToNextPlayer();
+			}
 			answer = "y";
 		}
 
@@ -124,17 +146,47 @@ public class SkunkApp
 	{
 		String answer = "y";
 		boolean roundActive = true;
+		int startingIndex;
+		int lastIndex = 0;
+		
+		StdOut.println("------------ Last Round ---------------------------");
+		if(controller.getPlayerCount() > 1) {
+			startingIndex = controller.getPlayerIndex();
+			if (startingIndex == 0 ) {
+				lastIndex = controller.getPlayerCount() - 1;
+			}
+			else {
+				lastIndex = startingIndex - 1;
+			}
+		}
+		else {
+			roundActive = false;
+		}
+
 		while (roundActive)
 		{
 			while (answer.equals("y"))
 			{
 				if (controller.takeATurn())
 				{
-					answer = askQuestion(controller.getPlayerName() + "'s turn Score is " + controller.getRunningTotal()
-							+ ". Play again (y/n)?");
+					StdOut.print(controller.getPlayerName());
+					StdOut.print("'s turn score is " + controller.getRunningTotal());
+					StdOut.print(" Game points are " + controller.getPlayerGamePoints());
+					answer = askQuestion(". Roll again (y/n)?");
+				}
+				else
+				{
+					StdOut.print(controller.getPlayerName() + "'s turn. ");
+					StdOut.println("Got a " + controller.getTheDiceValues());
+					answer = "n";
 				}
 			}
-			roundActive = controller.goToNextPlayer();
+			StdOut.println(" ");
+			controller.goToNextPlayer();
+			if(controller.getPlayerIndex() == lastIndex) {
+				roundActive = false;
+			}
+			answer = "y";
 		}
 
 		return false;
@@ -151,17 +203,30 @@ public class SkunkApp
 			controller.setPlayerIndex(i);
 			StdOut.print(controller.getPlayerName());
 			StdOut.print(": turn=" + controller.getRunningTotal());
-		    StdOut.print(" game=" + controller.getPlayerGamePoints());
-		    StdOut.println(" chips=" + controller.getPlayerChips());
-			if (controller.getRunningTotal() > 100)
+			StdOut.print(" game=" + controller.getPlayerGamePoints());
+			StdOut.println(" chips=" + controller.getPlayerChips() + "\n");
+			if (controller.getPlayerGamePoints() >= 100)
 			{
 				retValue = false;
 			}
 		}
-		StdOut.println("---------------------------------------------------");
+//		StdOut.println("---------------------------------------------------");
 
 		controller.setPlayerIndex(currentIndex);
 		return retValue;
 	}
+	
+	private static void gameOver(Controller controller)
+	{
+	
+		StdOut.println("-------------------Final Score--------------------");
+		int winnerIndex = controller.findTheWinner();
+		controller.setPlayerIndex(winnerIndex);
+		StdOut.println("The winner is " + controller.getPlayerName());
+		controller.giveWinnerKitty();
+		printRoundStats(controller);
+		StdOut.println("Game Over");
+	}
+
 
 }

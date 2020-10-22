@@ -106,12 +106,20 @@ public class Game
 
 	public int getPlayerChips()
 	{
+		this.activePlayer = this.playerArray.get(playerIndex);
 		return this.activePlayer.getChips();
+	}
+	
+	public void setPlayerChips(int chips)
+	{
+		this.activePlayer = this.playerArray.get(playerIndex);
+		this.activePlayer.setChips(chips);
 	}
 
 	public String getTheDiceValues()
 	{
 		return this.turn.getTheDiceValues();
 	}
+
 
 }

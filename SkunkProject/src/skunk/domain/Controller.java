@@ -55,10 +55,47 @@ public class Controller
 	{
 		return this.game.getPlayerChips();
 	}
+	
+	public void setPlayerChips(int chips)
+	{
+		this.game.setPlayerChips(chips);
+	}
 
 	public String getTheDiceValues()
 	{
 		return this.game.getTheDiceValues();
+	}
+
+	public boolean isPlayerOver100() {
+		return(this.getPlayerGamePoints() + this.getRunningTotal() >= 100) ;
+	}
+
+	public int findTheWinner()
+	{
+		int highIndex = 0;
+		int maxPoints = 0;
+		int points;
+		for(int i = 0; i < game.getPlayerCount(); i++) {
+			game.setPlayerIndex(i);
+			points = game.getPlayerGamePoints();
+			if (points > maxPoints) {
+				maxPoints = points;
+				highIndex = i;
+			}
+		}
+		return highIndex;
+	}
+
+	public int getKittyChips()
+	{
+		return game.getKitty();
+	}
+
+	public void giveWinnerKitty()
+	{
+		game.setPlayerChips(game.getPlayerChips() + game.getKitty());
+
+		
 	}
 
 }
