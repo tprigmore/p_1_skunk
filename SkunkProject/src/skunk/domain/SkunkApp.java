@@ -21,6 +21,10 @@ public class SkunkApp
 		StdOut.println("----------------------------------------------------\n\n");
 		if(askQuestion("Do you want to play skunk? (y/n) ").equals("y")) {
 			state = State.SETUP;
+			if(askQuestion("Do you want to see the rules? (y/n) ").equals("y")) {
+				StdOut.println(controller.getRules());
+			}
+
 		}
 		else {
 			state = State.DONE;
