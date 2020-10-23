@@ -1,5 +1,6 @@
 package skunk.domain;
 
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
@@ -86,5 +87,39 @@ class TestController
 		controller.setPlayerChips(25);
 		assertEquals(25, controller.getPlayerChips());
 	}
+	
+	@Test
+	void test_controller_get_kitty()
+	{
+		Controller controller = new Controller();
+		assertEquals(0, controller.getKittyChips());
+	}
+	
+	@Test
+	public void test_game_for_winner()
+	{
+		boolean assertValue = false;
+		int count = 0;
+		Controller controller = new Controller();
+		controller.addPlayer("Scott");
+		while (count < 100) {
+			count++;
+			if (controller.takeATurn()) {
+				if (controller.getRunningTotal() > 20) {
+					controller.goToNextPlayer();
+				}
+			} 
+			else {
+				controller.goToNextPlayer();
+			}
+			if(controller.getPlayerGamePoints() > 100) {
+				assertValue = true;
+				break;
+			}
+		}
 
+		assertEquals("Scot", controller.findTheWinner());
+	}
+	
+	
 }
