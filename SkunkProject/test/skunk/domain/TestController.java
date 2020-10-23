@@ -84,7 +84,7 @@ class TestController
 		Controller controller = new Controller();
 		controller.addPlayer("Scott");
 		controller.setPlayerChips(25);
-		assertEquals(50, controller.getPlayerChips());
+		assertEquals(25, controller.getPlayerChips());
 	}
 
 }
