@@ -69,5 +69,13 @@ class TestController
 		controller.addPlayer("Scott");
 		assertEquals(0, controller.getPlayerGamePoints());
 	}	
+	
+	@Test
+	void test_controller_get_player_game_chips()
+	{
+		Controller controller = new Controller();
+		controller.addPlayer("Scott");
+		assertEquals(49, controller.getPlayerChips());
+	}	
 
 }
