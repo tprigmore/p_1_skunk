@@ -121,5 +121,30 @@ class TestController
 		assertEquals("Scott", controller.findTheWinner());
 	}
 	
+	@Test
+	public void test_is_player_over_100()
+	{
+		boolean assertValue = false;
+		int count = 0;
+		Controller controller = new Controller();
+		controller.addPlayer("Scott");
+		while (count < 100) {
+			count++;
+			if (controller.takeATurn()) {
+				if (controller.getRunningTotal() > 20) {
+					controller.goToNextPlayer();
+				}
+			} 
+			else {
+				controller.goToNextPlayer();
+			}
+			if(controller.isPlayerOver100()) {
+				assertValue = true;
+				break;
+			}
+		}
+
+		assertEquals("Scot", controller.findTheWinner());
+	}
 	
 }
