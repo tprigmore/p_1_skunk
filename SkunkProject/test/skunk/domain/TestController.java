@@ -144,7 +144,7 @@ class TestController
 			}
 		}
 
-		assertEquals("Scot", controller.findTheWinner());
+		assertEquals("Scott", controller.findTheWinner());
 	}
 	
 }
