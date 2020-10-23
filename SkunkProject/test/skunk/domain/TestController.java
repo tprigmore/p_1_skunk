@@ -206,7 +206,7 @@ class TestController
 				+ "other players, or they can stop.\n"
 				+ "When the first player to reach or exceed 100 points stops, all the other\n"
 				+ "players get another chance to roll, giving them a chance to win the game.\n"
-				+ "The winning player gets all the kitty points\n";
+				+ "The winning player gets all the kitty points.\n";
 		assertEquals(rules, controller.getRules());
 	}
 
