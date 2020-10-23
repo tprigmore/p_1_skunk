@@ -12,7 +12,7 @@ class TestController
 	{
 		Controller controller = new Controller();
 		controller.addPlayer("Scott");
-		assertEquals("Scot", controller.getPlayerName());
+		assertEquals("Scott", controller.getPlayerName());
 	}
 
 }
