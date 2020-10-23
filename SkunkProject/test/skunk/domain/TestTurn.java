@@ -66,4 +66,27 @@ class TestTurn
 		}
 		assertTrue(result);
 	}
+	
+	@Test
+	void test_get_dice_values()
+	{
+		boolean returnvalue = false;
+		Player activePlayer = new Player("Scott");
+		Kitty kitty = new Kitty();
+		Turn turn = new Turn(activePlayer, kitty);
+		String str = turn.getTheDiceValues();
+		String str1 = str.substring(0, 1);
+		if (str1.equals("1")) {
+			str1 = str.substring(0, 2);
+		}
+		int number = Integer.parseInt(str1);
+		if ((number >= 2) && (number <= 12)) {
+			returnvalue = true;
+		}
+		
+		assertTrue(returnvalue);
+	}
+
+
+
 }

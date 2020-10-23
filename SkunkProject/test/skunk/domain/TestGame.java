@@ -60,5 +60,64 @@ class TestGame
 
 		assertTrue(assertValue);
 	}
+	
+	@Test
+	void testSetAndGetChips()
+	{
+		Game game = new Game();
+		game.addPlayer("Scott");
+		game.setPlayerChips(10);
+		
+		assertEquals(10, game.getPlayerChips());
+	}
+	
+	@Test
+	void testSetAndGetGamePoints()
+	{
+		Game game = new Game();
+		game.addPlayer("Scott");
+		game.setPlayerIndex(0);
+		game.setPlayerGamePoints(10);;
+		
+		assertEquals(10, game.getPlayerGamePoints());
+	}
+	
+	@Test
+	void test_get_dice_values()
+	{
+		boolean returnvalue = false;
+		Game game = new Game();
+		game.addPlayer("Scott");
+		game.takeATurn();
+		String str = game.getTheDiceValues();
+		String str1 = str.substring(0, 1);
+		if (str1.equals("1")) {
+			str1 = str.substring(0, 2);
+		}
+		int number = Integer.parseInt(str1);
+		if ((number >= 2) && (number <= 12)) {
+			returnvalue = true;
+		}
+		
+		assertTrue(returnvalue);
+	}
+	
+	@Test
+	void test_get_player_index()
+	{
+		Game game = new Game();
+		game.addPlayer("Scott");
+		
+		assertEquals(0, game.getPlayerIndex());
+	}
+	
+	@Test
+	void test_get_player_count()
+	{
+		Game game = new Game();
+		game.addPlayer("Scott");
+		
+		assertEquals(1, game.getPlayerCount());
+	}
 
 }

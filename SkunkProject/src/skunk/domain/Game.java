@@ -74,8 +74,8 @@ public class Game
 	public boolean goToNextPlayer()
 	{
 		boolean retValue = true ;
-		activePlayer.setGamePoints(activePlayer.getGamePoints() + activePlayer.getTurnPoints());
-		activePlayer.setTurnPoints(0);
+		this.activePlayer.setGamePoints(this.activePlayer.getGamePoints() + this.activePlayer.getTurnPoints());
+		this.activePlayer.setTurnPoints(0);
 		playerIndex++;
 		if (playerIndex == playerCount)
 		{
@@ -87,14 +87,14 @@ public class Game
 
 	public int getPlayerGamePoints()
 	{
-		Player player;
-		player = this.playerArray.get(playerIndex);
-		return player.getGamePoints();
+		this.activePlayer = this.playerArray.get(playerIndex);
+		return this.activePlayer.getGamePoints();
 	}
 
 	public void setPlayerGamePoints(int points)
 	{
-		this.activePlayer.setTurnPoints(points);
+		this.activePlayer = this.playerArray.get(playerIndex);
+		this.activePlayer.setGamePoints(points);
 	}
 
 	public boolean takeATurn()
