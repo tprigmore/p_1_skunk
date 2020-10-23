@@ -71,11 +71,20 @@ class TestController
 	}	
 	
 	@Test
-	void test_controller_get_player_game_chips()
+	void test_controller_get_player_chips()
 	{
 		Controller controller = new Controller();
 		controller.addPlayer("Scott");
 		assertEquals(50, controller.getPlayerChips());
-	}	
+	}
+	
+	@Test
+	void test_controller_set_player_chips()
+	{
+		Controller controller = new Controller();
+		controller.addPlayer("Scott");
+		controller.setPlayerChips(25);
+		assertEquals(50, controller.getPlayerChips());
+	}
 
 }
