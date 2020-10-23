@@ -11,7 +11,8 @@ class TestController
 	void test_controller_state()
 	{
 		Controller controller = new Controller();
-		
+		controller.addPlayer("Scott");
+		assertEquals("Scot", controller.getPlayerName());
 	}
 
 }
