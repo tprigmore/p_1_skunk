@@ -59,7 +59,7 @@ class TestController
 	{
 		Controller controller = new Controller();
 		controller.setPlayerIndex(1);
-		assertEquals(0, controller.getPlayerIndex());
+		assertEquals(1, controller.getPlayerIndex());
 	}	
 
 }
