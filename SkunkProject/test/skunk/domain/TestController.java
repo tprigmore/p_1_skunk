@@ -36,6 +36,30 @@ class TestController
 		assertEquals("Joe", controller.getPlayerName());
 	}
 
+	@Test
+	void test_controller_get_player_index()
+	{
+		Controller controller = new Controller();
+		controller.addPlayer("Scott");
+		
+		assertEquals(0, controller.getPlayerIndex());
+	}	
 	
+	@Test
+	void test_controller_get_player_count()
+	{
+		Controller controller = new Controller();
+		controller.addPlayer("Scott");
+		controller.addPlayer("Joe");
+		assertEquals(2, controller.getPlayerCount());
+	}	
+	
+	@Test
+	void test_controller_set_player_index()
+	{
+		Controller controller = new Controller();
+		controller.setPlayerIndex(1);
+		assertEquals(0, controller.getPlayerIndex());
+	}	
 
 }
