@@ -67,7 +67,7 @@ class TestController
 	{
 		Controller controller = new Controller();
 		controller.addPlayer("Scott");
-		assertEquals(1, controller.getPlayerGamePoints());
+		assertEquals(0, controller.getPlayerGamePoints());
 	}	
 
 }
