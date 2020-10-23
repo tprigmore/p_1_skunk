@@ -61,5 +61,13 @@ class TestController
 		controller.setPlayerIndex(1);
 		assertEquals(1, controller.getPlayerIndex());
 	}	
+	
+	@Test
+	void test_controller_get_player_game_points()
+	{
+		Controller controller = new Controller();
+		controller.addPlayer("Scott");
+		assertEquals(1, controller.getPlayerGamePoints());
+	}	
 
 }
