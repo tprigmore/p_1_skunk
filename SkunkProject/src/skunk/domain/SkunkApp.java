@@ -19,20 +19,23 @@ public class SkunkApp
 		StdOut.println("----------------------------------------------------");
 		StdOut.println("--   Welcome to the game skunk! Version 1.0       --");
 		StdOut.println("----------------------------------------------------\n\n");
-		if(askQuestion("Do you want to play skunk? (y/n) ").equals("y")) {
+		if (askQuestion("Do you want to play skunk? (y/n) ").equals("y"))
+		{
 			state = State.SETUP;
-			if(askQuestion("Do you want to see the rules? (y/n) ").equals("y")) {
+			if (askQuestion("Do you want to see the rules? (y/n) ").equals("y"))
+			{
 				StdOut.println(controller.getRules());
 			}
 
 		}
-		else {
+		else
+		{
 			state = State.DONE;
 		}
 
 		while (state != State.DONE)
 		{
-			
+
 			switch (state)
 			{
 			case SETUP:
@@ -117,7 +120,7 @@ public class SkunkApp
 				answer = takeATrun(controller);
 			}
 			StdOut.println(" ");
-			
+
 			if (controller.isPlayerOver100())
 			{
 				StdOut.println("!!!!!! " + controller.getPlayerName() + " is over 100. Playing last round!!!!!!");
@@ -140,18 +143,22 @@ public class SkunkApp
 		boolean roundActive = true;
 		int startingIndex;
 		int lastIndex = 0;
-		
+
 		StdOut.println("------------ Last Round ---------------------------");
-		if(controller.getPlayerCount() > 1) {
+		if (controller.getPlayerCount() > 1)
+		{
 			startingIndex = controller.getPlayerIndex();
-			if (startingIndex == 0 ) {
+			if (startingIndex == 0)
+			{
 				lastIndex = controller.getPlayerCount() - 1;
 			}
-			else {
+			else
+			{
 				lastIndex = startingIndex - 1;
 			}
 		}
-		else {
+		else
+		{
 			roundActive = false;
 		}
 
@@ -163,7 +170,8 @@ public class SkunkApp
 			}
 			StdOut.println(" ");
 			controller.goToNextPlayer();
-			if(controller.getPlayerIndex() == lastIndex) {
+			if (controller.getPlayerIndex() == lastIndex)
+			{
 				roundActive = false;
 			}
 			answer = "y";
@@ -211,20 +219,19 @@ public class SkunkApp
 		}
 		StdOut.println("Kitty has " + controller.getKittyChips() + " chips.");
 
-//		StdOut.println("---------------------------------------------------");
+		// StdOut.println("---------------------------------------------------");
 
 		controller.setPlayerIndex(currentIndex);
 		return retValue;
 	}
-	
+
 	private static void gameOver(Controller controller)
 	{
-	
+
 		StdOut.println("-------------------Final Score--------------------");
 		StdOut.println("The winner is " + controller.findTheWinner());
 		printRoundStats(controller);
 		StdOut.println("Game Over");
 	}
-
 
 }
