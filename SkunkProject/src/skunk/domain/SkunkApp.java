@@ -11,10 +11,9 @@ public class SkunkApp
 	}
 
 	private static State state = State.SETUP;
-	
+
 	public static void main(String[] args)
 	{
-
 
 		Controller controller = new Controller();
 
@@ -37,12 +36,10 @@ public class SkunkApp
 
 		while (state != State.DONE)
 		{
-
 			switch (state)
 			{
 			case SETUP:
 				setupGame(controller);
-				state = State.PLAY_ROUND;
 				break;
 			case PLAY_ROUND:
 				playRound(controller);
@@ -51,20 +48,11 @@ public class SkunkApp
 				printRoundStats(controller);
 				break;
 			case LAST_ROUND:
-				if (playLastRound(controller))
-				{
-					state = State.LAST_ROUND;
-				}
-				else
-				{
-					state = State.GAME_END;
-				}
+				playLastRound(controller);
 				break;
 			case GAME_END:
 				gameOver(controller);
-				state = State.DONE;
 				break;
-
 			default:
 				state = State.DONE;
 				break;
@@ -79,11 +67,32 @@ public class SkunkApp
 		String answer = StdIn.readLine();
 		return answer;
 	}
-	
-	private static String askYesOrNo(String question) {
+
+	private static String askYesOrNo(String question)
+	{
 		String answer = askQuestion(question);
-		if (answer.toLowerCase().charAt(0) == 'y') {
+		if (answer.toLowerCase().charAt(0) == 'y')
+		{
 			answer = "y";
+		}
+		return answer;
+	}
+
+	private static String takeATrun(Controller controller)
+	{
+		String answer;
+		StdOut.print(controller.getPlayerName() + "'s turn. ");
+
+		if (controller.takeATurn())
+		{
+			StdOut.print(" score is " + controller.getRunningTotal());
+			StdOut.print(" Game points are " + controller.getPlayerGamePoints());
+			answer = askYesOrNo(". Roll again (y/n)?");
+		}
+		else
+		{
+			StdOut.println("Got a " + controller.getTheDiceValues());
+			answer = "n";
 		}
 		return answer;
 	}
@@ -100,6 +109,7 @@ public class SkunkApp
 			answer = askYesOrNo("Add another player (y/n)? ");
 
 		}
+		state = State.PLAY_ROUND;
 	}
 
 	private static void playRound(Controller controller)
@@ -123,78 +133,17 @@ public class SkunkApp
 			}
 			else
 			{
-				if(controller.goToNextPlayer()) {
+				if (controller.goToNextPlayer())
+				{
 					state = State.PLAY_ROUND;
 				}
-				else {
+				else
+				{
 					state = State.ROUND_END;
 				}
 			}
 			answer = "y";
 		}
-
-	}
-
-	private static boolean playLastRound(Controller controller)
-	{
-		String answer = "y";
-		boolean roundActive = true;
-		int startingIndex;
-		int lastIndex = 0;
-
-		StdOut.println("------------ Last Round ---------------------------");
-		if (controller.getPlayerCount() > 1)
-		{
-			startingIndex = controller.getPlayerIndex();
-			if (startingIndex == 0)
-			{
-				lastIndex = controller.getPlayerCount() - 1;
-			}
-			else
-			{
-				lastIndex = startingIndex - 1;
-			}
-		}
-		else
-		{
-			roundActive = false;
-		}
-
-		while (roundActive)
-		{
-			while (answer.equals("y"))
-			{
-				answer = takeATrun(controller);
-			}
-			StdOut.println(" ");
-			controller.goToNextPlayer();
-			if (controller.getPlayerIndex() == lastIndex)
-			{
-				roundActive = false;
-			}
-			answer = "y";
-		}
-
-		return false;
-	}
-
-	private static String takeATrun(Controller controller)
-	{
-		String answer;
-		StdOut.print(controller.getPlayerName() + "'s turn. ");
-
-		if (controller.takeATurn())
-		{
-			StdOut.print(" score is " + controller.getRunningTotal());
-			StdOut.print(" Game points are " + controller.getPlayerGamePoints());
-			answer = askYesOrNo(". Roll again (y/n)?");
-		}
-		else
-		{
-			StdOut.println("Got a " + controller.getTheDiceValues());
-			answer = "n";
-		}
-		return answer;
 	}
 
 	private static void printRoundStats(Controller controller)
@@ -216,18 +165,56 @@ public class SkunkApp
 		}
 		StdOut.println("Kitty has " + controller.getKittyChips() + " chips.");
 
-		// StdOut.println("---------------------------------------------------");
-
 		controller.setPlayerIndex(currentIndex);
+	}
+
+	private static void playLastRound(Controller controller)
+	{
+		String answer = "y";
+		int startingIndex;
+		int lastIndex = 0;
+
+		StdOut.println("------------ Last Round ---------------------------");
+		if (controller.getPlayerCount() > 1)
+		{
+			startingIndex = controller.getPlayerIndex();
+			if (startingIndex == 0)
+			{
+				lastIndex = controller.getPlayerCount() - 1;
+			}
+			else
+			{
+				lastIndex = startingIndex - 1;
+			}
+		}
+		else
+		{
+			state = State.GAME_END;
+		}
+
+		while (state == State.LAST_ROUND)
+		{
+			while (answer.equals("y"))
+			{
+				answer = takeATrun(controller);
+			}
+			StdOut.println(" ");
+			controller.goToNextPlayer();
+			if (controller.getPlayerIndex() == lastIndex)
+			{
+				state = State.GAME_END;
+			}
+			answer = "y";
+		}
 	}
 
 	private static void gameOver(Controller controller)
 	{
-
 		StdOut.println("-------------------Final Score--------------------");
 		StdOut.println("The winner is " + controller.findTheWinner());
 		printRoundStats(controller);
 		StdOut.println("Game Over");
+		state = State.DONE;
 	}
 
 }
