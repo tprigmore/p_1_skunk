@@ -10,19 +10,21 @@ public class SkunkApp
 		SETUP, PLAY_ROUND, LAST_ROUND, ROUND_END, GAME_END, MATCH_END, DONE
 	}
 
+	private static State state = State.SETUP;
+	
 	public static void main(String[] args)
 	{
 
-		State state = State.SETUP;
+
 		Controller controller = new Controller();
 
 		StdOut.println("----------------------------------------------------");
 		StdOut.println("--   Welcome to the game skunk! Version 1.0       --");
 		StdOut.println("----------------------------------------------------\n\n");
-		if (askQuestion("Do you want to play skunk? (y/n) ").equals("y"))
+		if (askYesOrNo("Do you want to play skunk? (y/n) ").equals("y"))
 		{
 			state = State.SETUP;
-			if (askQuestion("Do you want to see the rules? (y/n) ").equals("y"))
+			if (askYesOrNo("Do you want to see the rules? (y/n) ").equals("y"))
 			{
 				StdOut.println(controller.getRules());
 			}
@@ -43,14 +45,7 @@ public class SkunkApp
 				state = State.PLAY_ROUND;
 				break;
 			case PLAY_ROUND:
-				if (playRound(controller))
-				{
-					state = State.PLAY_ROUND;
-				}
-				else
-				{
-					state = State.ROUND_END;
-				}
+				playRound(controller);
 				break;
 			case ROUND_END:
 				if (printRoundStats(controller))
@@ -87,9 +82,16 @@ public class SkunkApp
 
 	private static String askQuestion(String question)
 	{
-		String answer;
 		StdOut.print(question);
-		answer = StdIn.readLine();
+		String answer = StdIn.readLine();
+		return answer;
+	}
+	
+	private static String askYesOrNo(String question) {
+		String answer = askQuestion(question);
+		if (answer.toLowerCase().charAt(0) == 'y') {
+			answer = "y";
+		}
 		return answer;
 	}
 
@@ -102,18 +104,17 @@ public class SkunkApp
 			answer = askQuestion("Enter player name: ");
 			StdOut.println("You typed : " + answer + "\n");
 			controller.addPlayer(answer);
-			answer = askQuestion("Add another player (y/n)? ");
-			answer.toLowerCase();
+			answer = askYesOrNo("Add another player (y/n)? ");
+
 		}
 	}
 
-	private static boolean playRound(Controller controller)
+	private static void playRound(Controller controller)
 	{
 		String answer = "y";
-		boolean roundActive = true;
 		StdOut.println("------------ Next Round ---------------------------");
 
-		while (roundActive)
+		while (state == State.PLAY_ROUND)
 		{
 			while (answer.equals("y"))
 			{
@@ -124,17 +125,21 @@ public class SkunkApp
 			if (controller.isPlayerOver100())
 			{
 				StdOut.println("!!!!!! " + controller.getPlayerName() + " is over 100. Playing last round!!!!!!");
-				roundActive = false;
+				state = State.ROUND_END;
 				controller.goToNextPlayer();
 			}
 			else
 			{
-				roundActive = controller.goToNextPlayer();
+				if(controller.goToNextPlayer()) {
+					state = State.PLAY_ROUND;
+				}
+				else {
+					state = State.ROUND_END;
+				}
 			}
 			answer = "y";
 		}
 
-		return false;
 	}
 
 	private static boolean playLastRound(Controller controller)
@@ -189,7 +194,7 @@ public class SkunkApp
 		{
 			StdOut.print(" score is " + controller.getRunningTotal());
 			StdOut.print(" Game points are " + controller.getPlayerGamePoints());
-			answer = askQuestion(". Roll again (y/n)?");
+			answer = askYesOrNo(". Roll again (y/n)?");
 		}
 		else
 		{
