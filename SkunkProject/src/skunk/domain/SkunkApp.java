@@ -48,14 +48,7 @@ public class SkunkApp
 				playRound(controller);
 				break;
 			case ROUND_END:
-				if (printRoundStats(controller))
-				{
-					state = State.PLAY_ROUND;
-				}
-				else
-				{
-					state = State.LAST_ROUND;
-				}
+				printRoundStats(controller);
 				break;
 			case LAST_ROUND:
 				if (playLastRound(controller))
@@ -204,9 +197,8 @@ public class SkunkApp
 		return answer;
 	}
 
-	private static boolean printRoundStats(Controller controller)
+	private static void printRoundStats(Controller controller)
 	{
-		boolean retValue = true;
 		int currentIndex = controller.getPlayerIndex();
 		StdOut.println("---------------------------------------------------");
 
@@ -219,7 +211,7 @@ public class SkunkApp
 			StdOut.println(" chips=" + controller.getPlayerChips() + "\n");
 			if (controller.getPlayerGamePoints() >= 100)
 			{
-				retValue = false;
+				state = State.LAST_ROUND;
 			}
 		}
 		StdOut.println("Kitty has " + controller.getKittyChips() + " chips.");
@@ -227,7 +219,6 @@ public class SkunkApp
 		// StdOut.println("---------------------------------------------------");
 
 		controller.setPlayerIndex(currentIndex);
-		return retValue;
 	}
 
 	private static void gameOver(Controller controller)
