@@ -149,6 +149,7 @@ public class SkunkApp
 	private static void printRoundStats(Controller controller)
 	{
 		int currentIndex = controller.getPlayerIndex();
+		state = State.PLAY_ROUND;
 		StdOut.println("---------------------------------------------------");
 
 		for (int i = 0; i < controller.getPlayerCount(); i++)
@@ -163,8 +164,8 @@ public class SkunkApp
 				state = State.LAST_ROUND;
 			}
 		}
+		
 		StdOut.println("Kitty has " + controller.getKittyChips() + " chips.");
-
 		controller.setPlayerIndex(currentIndex);
 	}
 
