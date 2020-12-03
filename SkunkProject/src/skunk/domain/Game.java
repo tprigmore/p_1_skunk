@@ -73,7 +73,7 @@ public class Game
 
 	public boolean goToNextPlayer()
 	{
-		boolean retValue = true ;
+		boolean retValue = true;
 		this.activePlayer.setGamePoints(this.activePlayer.getGamePoints() + this.activePlayer.getTurnPoints());
 		this.activePlayer.setTurnPoints(0);
 		playerIndex++;
@@ -109,7 +109,7 @@ public class Game
 		this.activePlayer = this.playerArray.get(playerIndex);
 		return this.activePlayer.getChips();
 	}
-	
+
 	public void setPlayerChips(int chips)
 	{
 		this.activePlayer = this.playerArray.get(playerIndex);
@@ -120,6 +120,5 @@ public class Game
 	{
 		return this.turn.getTheDiceValues();
 	}
-
 
 }

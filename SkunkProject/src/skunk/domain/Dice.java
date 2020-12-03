@@ -1,4 +1,5 @@
 package skunk.domain;
+
 import edu.princeton.cs.introcs.StdOut;
 
 /**
@@ -67,35 +68,35 @@ public class Dice
 		return "Dice with last roll: " + getLastRoll() + " => " + die1.getLastRoll() + " + " + die2.getLastRoll();
 	}
 
-//	// static methods can go anywhere - but at end is one convention
-//
-//	public static final int NUM_TRIALS = 360;
-//
-//	public static void main(String[] args)
-//	{
-//		// simulate repeated rolls of Dice, counting the many double skunks
-//		
-//		Dice dice = new Dice();
-//		int doubleSkunkCount = 0;
-//
-//		for (int i = 0; i < NUM_TRIALS; i++)
-//		{
-//			dice.roll();
-//			StdOut.println(dice);
-//
-//			if (dice.getLastRoll() == 2)
-//				doubleSkunkCount++;
-//		}
-//
-//		StdOut.println("Actual count: " + doubleSkunkCount);
-//		StdOut.println("Expected count: " + (NUM_TRIALS / 36.0));
-//	}
+	// // static methods can go anywhere - but at end is one convention
+	//
+	// public static final int NUM_TRIALS = 360;
+	//
+	// public static void main(String[] args)
+	// {
+	// // simulate repeated rolls of Dice, counting the many double skunks
+	//
+	// Dice dice = new Dice();
+	// int doubleSkunkCount = 0;
+	//
+	// for (int i = 0; i < NUM_TRIALS; i++)
+	// {
+	// dice.roll();
+	// StdOut.println(dice);
+	//
+	// if (dice.getLastRoll() == 2)
+	// doubleSkunkCount++;
+	// }
+	//
+	// StdOut.println("Actual count: " + doubleSkunkCount);
+	// StdOut.println("Expected count: " + (NUM_TRIALS / 36.0));
+	// }
 
 	public int getDie1LastRoll()
 	{
 		return die1.getLastRoll();
 	}
-	
+
 	public int getDie2LastRoll()
 	{
 		return die2.getLastRoll();

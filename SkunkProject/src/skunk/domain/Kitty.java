@@ -14,7 +14,7 @@ public class Kitty
 
 		return this.kitty;
 	}
-	
+
 	public void setKitty(int chips)
 	{
 

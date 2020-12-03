@@ -164,7 +164,7 @@ public class SkunkApp
 				state = State.LAST_ROUND;
 			}
 		}
-		
+
 		StdOut.println("Kitty has " + controller.getKittyChips() + " chips.");
 		controller.setPlayerIndex(currentIndex);
 	}
